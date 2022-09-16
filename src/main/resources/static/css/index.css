@@ -1,0 +1,17 @@
+#errorText {
+	color: red;
+	font-weight: bold;
+}
+
+.textAlign {
+		text-align: center;
+}
+
+.centerDiv {
+    display:block;
+    width:50%;
+    margin:0 auto;
+}
+.fontUpdate {
+	font-size: 26px;
+}

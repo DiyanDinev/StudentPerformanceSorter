@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+<head>
+	<title>Home</title>
+	<!--/*/ <th:block th:include="fragments/header :: header"></th:block>  /*/-->
+	<link rel="stylesheet" th:href="@{/css/libraries/chosen.min.css}">
+	<link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+
+	<div class="centerDiv">
+		<form id="uploadForm" th:action="@{/UploadFile}" method="post" autocomplete="off" enctype="multipart/form-data">
+			<h3 class="textAlign"> Hello!</h3>
+			
+			<div class="row mb-3">
+				<label class="col-sm-6 col-form-label">Select File to Upload:</label>
+				<div class="col-sm-6">
+					<input class="" type="file" id="myFile" name="filename" required="required">
+				</div>
+			</div>
+			
+		  	<div class="row mb-3">
+				<label class="col-sm-6 col-form-label">Select Sorting Method:</label>
+				<div class="col-sm-6">
+					<select name="sort" id="sort" class="form-select" required="required">
+					  <option value=""></option>
+					  <option value="Bubble">Bubble</option>
+					  <option value="Heap">Heap</option>
+					  <option value="Merge">Merge</option>
+					</select>
+				</div>
+			</div>
+	
+			<input type="submit">
+		</form>
+	</div>	
+	
+	<div th:if="${error}" id="errorText" class="textAlign"><span th:text="${error}"></span></div>
+	
+	<div th:if="${sortedRecords}">
+		<div class="textAlign fontUpdate">Number of Records: <span th:text="${numberOrRecords}"></span><br /> <span th:text="${sortingTime}"></span></div>
+		<table class="table table-striped">
+        	<thead>
+                <tr>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Performance Score</th>
+                </tr>
+        	</thead>
+            <tbody>
+                <tr th:each="record : ${sortedRecords}">
+                    <td th:text="${record.studentName}"></td>
+                    <td th:text="${record.performanceScore}"></td>
+                </tr>
+            </tbody>
+    	</table>
+	</div>
+
+	
+	<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block>  /*/-->
+	<script type="text/javascript" th:src="@{/js/libraries/chosen.jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/index.js}"></script>
+</body>
+</html>
