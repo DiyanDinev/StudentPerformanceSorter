@@ -39,6 +39,7 @@
 	
 	<div th:if="${sortedRecords}">
 		<div class="textAlign fontUpdate">Number of Records: <span th:text="${numberOrRecords}"></span><br /> <span th:text="${sortingTime}"></span></div>
+		<div class="textAlign"><button class="btn btn-info" id="downloadButton">Download table as CSV</button></div>
 		<table class="table table-striped">
         	<thead>
                 <tr>
